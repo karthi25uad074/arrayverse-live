@@ -1,7 +1,19 @@
 function Hero() {
+  const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
+
+  const goToPlayground = () => {
+    window.location.href = `${basePath}/playground`;
+  };
+
+  const goToLearn = () => {
+    window.location.href = `${basePath}/learn`;
+  };
+
   return (
     <section className="hero">
+
       <div className="hero-content">
+
         <div className="hero-tag">
           <span></span>
           ARRAY SYSTEM ONLINE
@@ -20,15 +32,35 @@ function Hero() {
         </p>
 
         <div className="hero-actions">
-          <button className="primary-btn">ENTER ARRAYVERSE</button>
-          <button className="secondary-btn">EXPLORE LEARNING</button>
+
+          <button
+            className="primary-btn"
+            type="button"
+            onClick={goToPlayground}
+          >
+            ENTER ARRAYVERSE
+          </button>
+
+          <button
+            className="secondary-btn"
+            type="button"
+            onClick={goToLearn}
+          >
+            EXPLORE LEARNING
+          </button>
+
         </div>
+
       </div>
 
       <div className="hero-array">
-        <div className="array-label">LIVE ARRAY CORE</div>
+
+        <div className="array-label">
+          ARRAY CORE
+        </div>
 
         <div className="array-cells">
+
           <div className="array-cell active">
             <span>0</span>
             <strong>12</strong>
@@ -53,14 +85,17 @@ function Hero() {
             <span>4</span>
             <strong>19</strong>
           </div>
+
         </div>
 
         <div className="array-memory">
           <span>INDEX</span>
           <span>VALUE</span>
-          <span>MEMORY BLOCK</span>
+          <span>MEMORY</span>
         </div>
+
       </div>
+
     </section>
   );
 }

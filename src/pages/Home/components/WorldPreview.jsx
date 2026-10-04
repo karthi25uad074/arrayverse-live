@@ -3,34 +3,31 @@ function WorldPreview() {
     {
       number: "01",
       title: "ARRAY ROOKIE",
-      description: "Discover the basics of arrays, elements and indexes.",
+      description: "Learn array basics, elements and indexes.",
       status: "START HERE",
+      unlocked: true,
     },
     {
       number: "02",
       title: "INDEX EXPLORER",
-      description: "Master positions, traversal and direct access.",
+      description: "Master indexing, traversal and direct access.",
       status: "LOCKED",
+      unlocked: false,
     },
     {
       number: "03",
       title: "MEMORY HUNTER",
-      description: "Understand how arrays live inside computer memory.",
+      description: "Explore how arrays are stored in memory.",
       status: "LOCKED",
-    },
-    {
-      number: "04",
-      title: "ALGORITHM RUNNER",
-      description: "Execute searching, sorting and array operations.",
-      status: "LOCKED",
-    },
-    {
-      number: "05",
-      title: "ARRAY MASTER",
-      description: "Complete the final challenges and prove your skills.",
-      status: "LOCKED",
+      unlocked: false,
     },
   ];
+
+  const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
+
+  const startLearning = () => {
+    window.location.href = `${basePath}/learn`;
+  };
 
   return (
     <section className="world-section">
@@ -43,20 +40,24 @@ function WorldPreview() {
         </h2>
 
         <p>
-          Learn step by step. Complete missions. Unlock the next level.
+          Start learning and unlock new array missions.
         </p>
       </div>
 
       <div className="world-grid">
-        {worlds.map((world, index) => (
+        {worlds.map((world) => (
           <div
-            className={`world-card ${index === 0 ? "unlocked" : ""}`}
+            className={`world-card ${
+              world.unlocked ? "unlocked" : "locked"
+            }`}
             key={world.number}
           >
-            <div className="world-number">{world.number}</div>
+            <div className="world-number">
+              {world.number}
+            </div>
 
             <div className="world-status">
-              {index === 0 ? "● ONLINE" : "● LOCKED"}
+              {world.unlocked ? "● ONLINE" : "● LOCKED"}
             </div>
 
             <h3>{world.title}</h3>
@@ -66,7 +67,16 @@ function WorldPreview() {
             <div className="world-bottom">
               <span>{world.status}</span>
 
-              <span className="world-arrow">→</span>
+              {world.unlocked && (
+                <button
+                  type="button"
+                  className="world-arrow"
+                  onClick={startLearning}
+                  aria-label="Start learning"
+                >
+                  →
+                </button>
+              )}
             </div>
           </div>
         ))}

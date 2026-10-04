@@ -18,8 +18,7 @@ function ArrayCore() {
         </h2>
 
         <p>
-          Every element has a position, a value and a place in memory.
-          Explore how an array really works.
+          See how array elements are stored using index, value and memory address.
         </p>
       </div>
 
@@ -31,7 +30,7 @@ function ArrayCore() {
             MEMORY VISUALIZER
           </div>
 
-          <span>5 ELEMENTS / ACTIVE</span>
+          <span>5 ELEMENTS</span>
         </div>
 
         <div className="core-array">
@@ -52,33 +51,6 @@ function ArrayCore() {
           ))}
         </div>
 
-        <div className="core-info">
-
-          <div className="info-block">
-            <span>INDEX</span>
-            <strong>POSITION</strong>
-            <p>
-              Each element is identified by its index.
-            </p>
-          </div>
-
-          <div className="info-block">
-            <span>VALUE</span>
-            <strong>DATA</strong>
-            <p>
-              The actual information stored inside the array.
-            </p>
-          </div>
-
-          <div className="info-block">
-            <span>ADDRESS</span>
-            <strong>MEMORY</strong>
-            <p>
-              Each element occupies a location in memory.
-            </p>
-          </div>
-
-        </div>
       </div>
     </section>
   );

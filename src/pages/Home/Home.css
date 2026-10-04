@@ -4967,3 +4967,181 @@
     animation: none !important;
   }
 }
+/* =========================================================
+   ARRAYVERSE HOME // CURRENT JSX OPTIMIZATION
+   Keeps the original premium design
+========================================================= */
+
+/* ---------------------------------------------------------
+   CURRENT WORLD MAP
+   Now using 3 cards instead of 5
+--------------------------------------------------------- */
+
+.world-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.world-card {
+  min-height: 285px;
+}
+
+/* Current JSX uses a real button for the arrow */
+.world-arrow {
+  border: 0;
+  padding: 0;
+  margin: 0;
+
+  background: transparent;
+  font-family: inherit;
+
+  cursor: pointer;
+}
+
+/* Locked cards should remain visually disabled */
+.world-card.locked {
+  cursor: default;
+}
+
+.world-card.locked:hover {
+  transform: translateY(-6px);
+}
+
+
+/* ---------------------------------------------------------
+   ARRAY CORE
+   Current JSX has no .core-info section
+--------------------------------------------------------- */
+
+.array-core-panel {
+  padding-bottom: 28px;
+}
+
+
+/* ---------------------------------------------------------
+   PREMIUM BUT LIGHTER ANIMATION
+--------------------------------------------------------- */
+
+/* Slow down the large background movement */
+.home-page::after {
+  animation-duration: 24s;
+}
+
+/* Hero core stays alive, but doesn't constantly move heavily */
+.hero-array {
+  animation-duration: 7s;
+}
+
+/* Keep the cells alive without excessive movement */
+.array-cell {
+  animation-duration: 5s;
+}
+
+/* Slower world-card decoration */
+.world-card::after {
+  animation-duration: 6s;
+}
+
+
+/* ---------------------------------------------------------
+   MOBILE
+--------------------------------------------------------- */
+
+@media (max-width: 900px) {
+
+  .world-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .world-card {
+    min-height: 260px;
+  }
+
+}
+
+
+/* ---------------------------------------------------------
+   SMALL MOBILE
+--------------------------------------------------------- */
+
+@media (max-width: 520px) {
+
+  .world-grid {
+    display: flex;
+    gap: 12px;
+
+    width: 100%;
+
+    overflow-x: auto;
+
+    padding:
+      15px
+      5px
+      30px;
+
+    scroll-snap-type: x mandatory;
+
+    scrollbar-width: none;
+  }
+
+  .world-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .world-card {
+    flex: 0 0 255px;
+
+    min-height: 250px;
+
+    scroll-snap-align: center;
+  }
+
+  /* Reduce heavy 3D movement on phones */
+  .hero-array {
+    animation: none;
+    transform: perspective(800px) rotateX(3deg);
+  }
+
+  .array-cell {
+    animation: none;
+  }
+
+  .world-card::after {
+    animation-duration: 8s;
+  }
+
+}
+
+
+/* ---------------------------------------------------------
+   VERY SMALL PHONES
+--------------------------------------------------------- */
+
+@media (max-width: 380px) {
+
+  .world-card {
+    flex-basis: 235px;
+  }
+
+  .hero-array {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+}
+
+
+/* ---------------------------------------------------------
+   TOUCH DEVICES
+--------------------------------------------------------- */
+
+@media (hover: none) {
+
+  .array-cell:hover {
+    transform: none;
+  }
+
+  .world-card:hover {
+    transform: translateY(-4px);
+  }
+
+}

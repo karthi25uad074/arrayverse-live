@@ -3,10 +3,13 @@ import "./Navbar.css";
 function Navbar() {
   const currentPath = window.location.pathname;
 
-  const basePath = "/arrayverse";
+  const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
 
   const getRoute = () => {
-    if (currentPath === basePath || currentPath === `${basePath}/`) {
+    if (
+      currentPath === basePath ||
+      currentPath === `${basePath}/`
+    ) {
       return "/";
     }
 
@@ -17,6 +20,14 @@ function Navbar() {
 
   const isActive = (path) => {
     return route === path ? "active" : "";
+  };
+
+  const getLink = (path) => {
+    if (path === "/") {
+      return `${basePath}/`;
+    }
+
+    return `${basePath}${path}`;
   };
 
   return (
@@ -42,7 +53,7 @@ function Navbar() {
       <nav className="navbar-links">
 
         <a
-          href={`${basePath}/`}
+          href={getLink("/")}
           className={`nav-link ${isActive("/")}`}
         >
           <span className="nav-number">01</span>
@@ -50,7 +61,7 @@ function Navbar() {
         </a>
 
         <a
-          href={`${basePath}/learn`}
+          href={getLink("/learn")}
           className={`nav-link ${isActive("/learn")}`}
         >
           <span className="nav-number">02</span>
@@ -58,7 +69,7 @@ function Navbar() {
         </a>
 
         <a
-          href={`${basePath}/practice`}
+          href={getLink("/practice")}
           className={`nav-link ${isActive("/practice")}`}
         >
           <span className="nav-number">03</span>
@@ -66,7 +77,7 @@ function Navbar() {
         </a>
 
         <a
-          href={`${basePath}/challenges`}
+          href={getLink("/challenges")}
           className={`nav-link ${isActive("/challenges")}`}
         >
           <span className="nav-number">04</span>
@@ -74,7 +85,7 @@ function Navbar() {
         </a>
 
         <a
-          href={`${basePath}/playground`}
+          href={getLink("/playground")}
           className={`nav-link ${isActive("/playground")}`}
         >
           <span className="nav-number">05</span>
@@ -103,6 +114,7 @@ function Navbar() {
 
       {/* MOBILE MENU */}
       <button
+        type="button"
         className="mobile-menu-button"
         aria-label="Open menu"
       >

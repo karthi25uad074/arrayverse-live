@@ -102,9 +102,12 @@ function Challenges() {
   const [completedCount, setCompletedCount] = useState(0);
   const [totalXp, setTotalXp] = useState(0);
 
+  const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
+
   useEffect(() => {
-    const completedLevels = challenges.filter((challenge) =>
-      localStorage.getItem(`challenge${challenge.id}Completed`) === "true"
+    const completedLevels = challenges.filter(
+      (challenge) =>
+        localStorage.getItem(`challenge${challenge.id}Completed`) === "true"
     );
 
     setCompletedCount(completedLevels.length);
@@ -118,7 +121,9 @@ function Challenges() {
   }, []);
 
   const isCompleted = (id) => {
-    return localStorage.getItem(`challenge${id}Completed`) === "true";
+    return (
+      localStorage.getItem(`challenge${id}Completed`) === "true"
+    );
   };
 
   const isUnlocked = (id) => {
@@ -137,42 +142,19 @@ function Challenges() {
   };
 
   const startChallenge = (id) => {
-    if (id === 1) {
-      window.location.href = "/challenges/level-01";
+    if (id >= 1 && id <= 8) {
+      window.location.href = `${basePath}/challenges/level-${String(
+        id
+      ).padStart(2, "0")}`;
+
       return;
     }
-    if (id === 2) {
-  window.location.href = "/challenges/level-02";
-  return;
-}
-if (id === 3) {
-  window.location.href = "/challenges/level-03";
-  return;
-}
-if (id === 4) {
-  window.location.href = "/challenges/level-04";
-  return;
-}
-if (id === 5) {
-  window.location.href = "/challenges/level-05";
-  return;
-}
-if (id === 6) {
-  window.location.href = "/challenges/level-06";
-  return;
-}
-if (id === 7) {
-  window.location.href = "/challenges/level-07";
-  return;
-}
-if (id === 8) {
-  window.location.href = "/challenges/level-08";
-  return;
-}
+
     alert("This mission is coming soon.");
   };
 
-  const progressPercent = (completedCount / challenges.length) * 100;
+  const progressPercent =
+    (completedCount / challenges.length) * 100;
 
   return (
     <div className="challenges-page">

@@ -3,7 +3,10 @@ function LessonViewer({ lesson, onClose }) {
 
   const startLesson = () => {
     onClose();
-    window.location.href = `/lesson/${lesson.number}`;
+
+    const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
+
+    window.location.href = `${basePath}/lesson/${lesson.number}`;
   };
 
   return (
@@ -18,6 +21,7 @@ function LessonViewer({ lesson, onClose }) {
           className="lesson-close"
           onClick={onClose}
           aria-label="Close lesson"
+          type="button"
         >
           ×
         </button>

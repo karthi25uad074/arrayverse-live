@@ -800,7 +800,9 @@ function Lesson() {
     "true"
   );
 
-  window.location.href = "/learn";
+  const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
+
+  window.location.href = `${basePath}/learn`;
 };
 
 

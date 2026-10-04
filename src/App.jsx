@@ -15,7 +15,10 @@ import Playground from "./pages/Playground/Playground";
 
 function App() {
   const path = window.location.pathname;
-  const route = path.replace(/^\/arrayverse/, "") || "/";
+
+  const route = path
+    .replace(/^\/arrayverse-live/, "")
+    .replace(/\/$/, "") || "/";
 
   if (route === "/learn") {
     return <Learn />;
@@ -27,6 +30,10 @@ function App() {
 
   if (route === "/practice") {
     return <Practice />;
+  }
+
+  if (route === "/challenges") {
+    return <Challenges />;
   }
 
   if (route === "/challenges/level-01") {
@@ -59,10 +66,6 @@ function App() {
 
   if (route === "/challenges/level-08") {
     return <Level08 />;
-  }
-
-  if (route === "/challenges") {
-    return <Challenges />;
   }
 
   if (route === "/playground") {

@@ -5,7 +5,9 @@ import { useEffect, useRef } from "react";
 function AstronautModel() {
   const group = useRef();
 
-  const { scene, animations } = useGLTF("/models/space-teacher.glb");
+  const modelPath = `${import.meta.env.BASE_URL}models/space-teacher.glb`;
+
+  const { scene, animations } = useGLTF(modelPath);
   const { actions } = useAnimations(animations, group);
 
   useEffect(() => {
@@ -62,6 +64,9 @@ function SpaceTeacher3D() {
     </div>
   );
 }
-useGLTF.preload("/models/space-teacher.glb");
+
+useGLTF.preload(
+  `${import.meta.env.BASE_URL}models/space-teacher.glb`
+);
 
 export default SpaceTeacher3D;

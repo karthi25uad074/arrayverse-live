@@ -314,7 +314,7 @@ if (activeLab === "music") {
 
   return (
     <div className="pg-page pg-train-page">
-
+    <Navbar />
       <header className="pg-train-header">
 
         <button

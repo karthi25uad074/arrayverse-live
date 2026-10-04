@@ -1,5 +1,7 @@
 import { useState } from "react";
 import TrainScene from "./components/TrainScene";
+import MusicPlaylist from "./components/MusicPlaylist";
+import Navbar from "../../shared/Navbar/Navbar";
 import "./Playground.css";
 
 const INITIAL_COACHES = ["S1", "S2"];
@@ -132,6 +134,7 @@ function Playground() {
   if (activeLab === null) {
     return (
       <div className="pg-page">
+        <Navbar />
         <div className="pg-hub">
 
           <div className="pg-hub-header">
@@ -199,39 +202,42 @@ function Playground() {
 
             {/* LOCKED 2 */}
 
-            <div className="pg-lab-card pg-locked-card">
+            <button
+  type="button"
+  className="pg-lab-card pg-music-card"
+  onClick={() => setActiveLab("music")}
+>
+  <div className="pg-card-glow"></div>
 
-              <div className="pg-lock-layer">
-                <div className="pg-lock">
-                  🔒
-                </div>
+  <div className="pg-lab-icon">
+    🎵
+  </div>
 
-                <span>COMING SOON</span>
-              </div>
+  <div className="pg-lab-number">
+    PLAYGROUND 02
+  </div>
 
-              <div className="pg-lab-icon">
-                🌐
-              </div>
+  <h2>
+    MUSIC PLAYLIST LAB
+  </h2>
 
-              <div className="pg-lab-number">
-                PLAYGROUND 02
-              </div>
+  <p>
+    Build and control a music playlist using
+    array operations.
+  </p>
 
-              <h2>
-                NEXT ARRAY LAB
-              </h2>
+  <div className="pg-tags">
+    <span>INSERT</span>
+    <span>DELETE</span>
+    <span>UPDATE</span>
+    <span>SEARCH</span>
+  </div>
 
-              <p>
-                A new real-world array simulation
-                will be added here.
-              </p>
-
-              <div className="pg-tags">
-                <span>LOCKED</span>
-                <span>???</span>
-                <span>???</span>
-              </div>
-            </div>
+  <div className="pg-enter">
+    ENTER MUSIC LAB
+    <span>→</span>
+  </div>
+</button>
 
 
             {/* LOCKED 3 */}
@@ -292,7 +298,15 @@ function Playground() {
       </div>
     );
   }
+if (activeLab === "music") {
+  return (
+    <div className="pg-page pg-music-page">
+      <Navbar />
 
+      <MusicPlaylist />
+    </div>
+  );
+}
 
   /* ==============================
      TRAIN LAB

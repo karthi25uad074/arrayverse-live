@@ -212,7 +212,7 @@ function Level03() {
 
             <button
               onClick={() => {
-                window.location.href = "/challenges";
+                window.location.href = `${import.meta.env.BASE_URL}challenges`;
               }}
               className="library-arena-button"
             >

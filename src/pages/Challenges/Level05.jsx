@@ -222,7 +222,7 @@ function Level05() {
 
             <button
               onClick={() => {
-                window.location.href = "/challenges";
+                window.location.href = `${import.meta.env.BASE_URL}challenges`;
               }}
               className="return-ocean-button"
             >

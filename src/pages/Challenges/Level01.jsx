@@ -284,8 +284,8 @@ function Level01() {
               className="begin-button"
               type="button"
               onClick={() => {
-                window.location.href = "/challenges";
-              }}
+  window.location.href = `${import.meta.env.BASE_URL}challenges`;
+}}
             >
               RETURN TO ARENA →
             </button>

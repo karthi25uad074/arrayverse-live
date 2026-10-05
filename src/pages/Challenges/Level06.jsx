@@ -265,7 +265,7 @@ function Level06() {
             <button
               className="return-dojo-button"
               onClick={() => {
-                window.location.href = "/challenges";
+                window.location.href = `${import.meta.env.BASE_URL}challenges`;
               }}
             >
               ✦ RETURN TO ARENA

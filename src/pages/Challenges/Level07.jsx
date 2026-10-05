@@ -393,7 +393,7 @@ function Level07() {
             <button
               className="return-volcano-button"
               onClick={() => {
-                window.location.href = "/challenges";
+                window.location.href = `${import.meta.env.BASE_URL}challenges`;
               }}
             >
               ✦ RETURN TO ARENA

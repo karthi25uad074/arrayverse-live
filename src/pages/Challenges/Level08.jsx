@@ -554,7 +554,7 @@ function Level08() {
 
           <button
             className="master-button"
-            onClick={() => (window.location.href = "/challenges")}
+            onClick={() => (window.location.href = `${import.meta.env.BASE_URL}challenges`)}
           >
             RETURN TO ARRAYVERSE
           </button>
